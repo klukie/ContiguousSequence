@@ -1,0 +1,63 @@
+public class ContiguousArray {
+
+	public static void main(String[] args) {
+		
+		//There are going ot be positive numbers in the array as stated 
+		int myArray[] = new int[] {2, -8, 3, -2, 4, -10};
+		
+		//print(myArray);
+		//printIndex(myArray, 2, 4);
+		
+		int start = 0;
+		int finish = 0;
+		int maxSoFar = Integer.MIN_VALUE;
+		int maxAtThisPoint = 0;  
+		int frontStart = 0;  
+		  
+		        for (int i = 0; i < myArray.length; i++)  
+		        { 
+		            maxAtThisPoint += myArray[i]; 
+		  
+		            if (maxSoFar < maxAtThisPoint)  
+		            { 
+		                maxSoFar = maxAtThisPoint; 
+		                start = frontStart; 
+		                finish = i; 
+		            } 
+		  
+		            if (maxAtThisPoint < 0)  
+		            { 
+		                maxAtThisPoint = 0; 
+		                frontStart = i + 1; 
+		            } 
+		        } 
+		        
+		        printIndex(myArray, start, finish); 
+		    } 
+	
+	
+	
+	
+	private static void print(int[] myArray) {
+		System.out.print("[ ");
+		for (int i = 0; i < myArray.length; i++) {
+			System.out.print(myArray[i] + " ");
+	
+		}
+		System.out.print("]\n");
+		
+	}
+	
+	private static void printIndex(int[] myArray, int start, int end) {
+		System.out.print("[ ");
+		int max = 0;
+		for(int i = start; i <= end; i++) {
+			System.out.print(myArray[i] + " ");
+			max += myArray[i];
+		}
+		System.out.print("]\n");
+		System.out.println("Max Sum = " + max);
+		
+	}
+	
+}
